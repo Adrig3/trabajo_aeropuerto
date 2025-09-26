@@ -16,9 +16,9 @@ class Reserva:
 
 
 reservas = [
-    Reserva(1, "Juan Perez", "Economy"),
-    Reserva(2, "Maria Lopez", "Business"),
-    Reserva(3, "Carlos Garcia", "Economy")
+    Reserva("12A", "Juan Perez", "Economy"),
+    Reserva("14B", "Maria Lopez", "Business"),
+    Reserva("21C", "Carlos Garcia", "Economy")
 ]
 
 
