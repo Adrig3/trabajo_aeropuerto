@@ -42,14 +42,18 @@ Cada función y clase está documentada con **docstrings** en formato claro, don
 - **Problema:** Al escribir en los ficheros, los caracteres con tilde o la `ñ` aparecían mal formados.  
 - **Causa:** No se estaba especificando el formato de codificación al abrir los archivos.  
 - **Solución:** Añadir `encoding="utf-8"` en cada sentencia `with open`.  
-- **Prompt planteado a ChatGPT:**  
-  *"Tengo un problema enviando texto a un fichero en python, no se como formatear el texto a utf8 en el with open. Explica breve y detalla lo que has añadido."*  
+- **Prompts planteado a ChatGPT:**  
+<br>
+
+  - *"Tengo un problema enviando texto a un fichero en python, no se como formatear el texto a utf8 en el with open. Explica breve y detalla lo que has añadido."*  
 
 ```python
 with open("reservas.txt", "w", encoding="utf-8") as archivo:
     ...
-````
+```
 ---
+
+
 
 ### ✍️ Creado por:  
 **Adrià Garí, Gabriel Santandreu y Daniel Cobo**
