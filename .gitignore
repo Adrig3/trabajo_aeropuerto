@@ -1,1 +1,4 @@
-./entorno_virtual_1
+entorno_virtual_1
+*.txt
+__pycache__
+*.log
