@@ -15,6 +15,9 @@ reservas = [
 
 ]
 
+archivos_creados = {}
+clases_reserva = ["Economy", "Business", "First"]
+
 """
 Crea y escribe en el archivo de reservas 'reservas_maestro_con_errores.txt'.
 
@@ -42,23 +45,20 @@ def crear_y_escribir_archivo_maestro_errores():
     except Exception as e:
         print(f"Ha ocurrido un error inesperado: {e}")
 
-
 """
-Lee el archivo reservas_maestro_con_errores.txt, 
-verifica que cada linea tenga un total de 4 campos de datos.
+Recibe por parámetro una línea y sus datos ya separados.
+Verifica que la línea sea válida según los criterios establecidos.
 
-Si la línea es válida, la escribe en un archivo correspondiente al destino.
-Si no lo es, se registra en registro_errores.log (se crea si no existe) y no se incorpora a los demás.
+En caso de no ser válida, devuelve False y el tipo de error.
+En caso de serlo, devuelve True y una cadena vacía.
 
-El formato de registro_errores.log es:
-[Fecha y hora] Línea: <contenido de la línea> - Error: <descripción del error>
+Parámetros:
+    - linea (str): la línea completa del archivo.
+    - datos (list): los datos de la línea ya separados.
 
-Parámetros: ninguno.
-Devuelve: El numero de archivos creados. En caso de error imprime un mensaje explicativo.
+Devuelve (bool, str): Por un lado devuelve un booleano que indica si la línea es válida o no. 
+                        Por otro lado devuelve una cadena con el tipo de error o vacía si no hay error.
 """
-archivos_creados = {}
-clases_reserva = ["Economy", "Business", "First"]
-
 def linea_is_ok(linea, datos):
     if isinstance(linea, str) and linea.strip() == "":
         return False, "Línea vacía"
@@ -74,6 +74,20 @@ def linea_is_ok(linea, datos):
 
     return False, "Error de formato"
 
+"""
+Lee el archivo reservas_maestro_con_errores.txt, 
+Separa la linea en campos y llama a la función linea_is_ok para verificar si la línea es válida.
+
+Si la línea es válida, la escribe en un archivo correspondiente al destino.
+Si no lo es, se registra en registro_errores.log (se crea si no existe) 
+con los detalles del error y no se incorpora a los demás.
+
+El formato de registro_errores.log es:
+[Fecha y hora] Línea: <contenido de la línea> - Error: <descripción del error>
+
+Parámetros: ninguno.
+Devuelve: El numero de archivos creados. En caso de error imprime un mensaje explicativo.
+"""
 def verificar_reservas():
     try:
         with open("reservas_maestro_con_errores.txt", "r", encoding="utf-8") as f:
